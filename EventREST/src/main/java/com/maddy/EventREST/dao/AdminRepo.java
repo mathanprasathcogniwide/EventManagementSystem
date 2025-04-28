@@ -1,4 +1,4 @@
-package com.maddy.EventREST.dao;
+package com.maddy.EventEST.dao;
 
 import com.maddy.EventREST.model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;

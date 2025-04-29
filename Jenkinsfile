@@ -12,9 +12,9 @@ pipeline {
                 steps{
                     script{
                         def commitMessage = sh(returnStdout: true, script: 'git log -1 --pretty=%B | cat')
-                        if(commitMessage =~ 'staging'){
+                        if(commitMessage =~ /staging/){
                             echo "Staging branch detected"
-                        } else if(commitMessage =~ 'production'){
+                        } else if(commitMessage =~ /production/){
                             echo "Production branch detected"
                         }
                     }

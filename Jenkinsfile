@@ -11,7 +11,7 @@ pipeline {
         stage('commit message'){
                 steps{
                     script{
-                        def commitMessage = sh(returnStdout: true, script: 'git log -1 --pretty=%B | cat')
+                        def commitMessage = bat(returnStdout: true, script: 'git log -1 --pretty=%B | cat')
                         if(commitMessage =~ /staging/){
                             echo "Staging branch detected"
                         } else if(commitMessage =~ /production/){

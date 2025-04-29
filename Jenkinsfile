@@ -8,6 +8,19 @@ pipeline {
             }
         }
 
+        stage('commit message'){
+                steps{
+                    script{
+                        def commitMessage = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                        if(commitMessage.contains("staging")){
+                            echo "Staging branch detected"
+                        } else if(commitMessage.contains("production")){
+                            echo "Production branch detected"
+                        }
+                    }
+                }
+            }
+
         stage('branch identification') {
             steps {
                 script {

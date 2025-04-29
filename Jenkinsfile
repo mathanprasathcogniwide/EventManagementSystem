@@ -11,10 +11,10 @@ pipeline {
         stage('commit message'){
                 steps{
                     script{
-                        def commitMessage = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
-                        if(commitMessage.contains("staging")){
+                        def commitMessage = sh(returnStdout: true, script: 'git log -1 --pretty=%B | cat')
+                        if(commitMessage =~ 'staging'){
                             echo "Staging branch detected"
-                        } else if(commitMessage.contains("production")){
+                        } else if(commitMessage =~ 'production'){
                             echo "Production branch detected"
                         }
                     }
